@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - StreetStyle</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="contato.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google Sign-In -->
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+            
+        </div>
+        <div class="navbar-buttons">
+            <button class="menu-btn" id="menu-toggle">☰</button>
+            <button class="auth-btn" onclick="login()">Login</button> <!-- Botão de Login -->
+            <button class="auth-btn" onclick="viewCart()">Carrinho</button> <!-- Botão de Carrinho -->
+            <button class="auth-btn" onclick="window.location.href='sobre.html'">Sobre</button> <!-- Botão Sobre -->
+        </div>
+    </div>
+
+    <!-- Menu Lateral -->
+    <div class="side-menu" id="side-menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="camisas.html">Camisas</a></li>
+            <li><a href="tenis.html">Tênis</a></li>
+            <li><a href="calcas.html">Calças</a></li>
+            <li><a href="acessorios.html">Acessórios</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+           
+        </ul>
+    </div>
+
+    <!-- Formulário de Contato -->
+    <form id="form">
+        <div class="field">
+            <label for="name">Nome</label>
+            <input type="text" name="name" id="name" required>
+        </div>
+        <div class="field">
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required>
+        </div>
+        <div class="field">
+            <label for="message">Mensagem</label>
+            <textarea name="message" id="message" required></textarea>
+        </div>
+
+        <input type="submit" id="button" value="Enviar Email">
+    </form>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+    <script type="text/javascript">
+        emailjs.init('_bVtKKCc_-SPciLJK');
+
+        const btn = document.getElementById('button');
+
+        document.getElementById('form')
+            .addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                btn.value = 'Enviando...';
+
+                const serviceID = 'default_service';
+                const templateID = 'template_9jdrxbi';
+
+                emailjs.sendForm(serviceID, templateID, this)
+                    .then(() => {
+                        btn.value = 'Enviar Email';
+                        alert('Sua mensagem foi enviada!');
+                    }, (err) => {
+                        btn.value = 'Enviar Email';
+                        alert('Houve um erro: ' + JSON.stringify(err));
+                    });
+            });
+    </script>
+
+    <script src="js.js"></script> <!-- Inclua seu arquivo JavaScript -->
+</body>
+</html>

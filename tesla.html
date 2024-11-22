@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncio de Tênis Tesla</title>
+    <link rel="stylesheet" href="destaque.css">
+    <style>
+        /* Estilização para os botões de tamanhos */
+        .sizes button {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .sizes button:hover {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        .sizes button.active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        /* Ajustes para garantir que todas as imagens fiquem visíveis */
+        .main-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        /* Ajuste no layout das imagens miniaturas */
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+        }
+        .thumbnail img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilização do botão de voltar */
+        .back-button {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: red;
+            color: white;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Navegação Personalizada -->
+<div class="navbar">
+    <div class="logo">
+        <img src="img/logo.png" alt="Logo">
+    </div>
+    <div class="navbar-links">
+        <a href="index.html">Home</a>
+    </div>
+</div>
+
+<div class="container">
+    
+    <!-- Seção de imagens -->
+    <div class="images-section">
+        <div class="main-image">
+            <img id="mainImg" src="img/tesla1.png" alt="Tênis Tesla">
+        </div>
+        <div class="thumbnail-container">
+            <div class="thumbnail">
+                <img src="img/tesla1.png" alt="Tênis Tesla Miniatura 1" onclick="changeImage('img/tesla1.png')">
+            </div>
+            <div class="thumbnail">
+                <img src="img/tesla2.png" alt="Tênis Tesla Miniatura 2" onclick="changeImage('img/tesla2.png')">
+            </div>
+            <div class="thumbnail">
+                <img src="img/tesla3.png" alt="Tênis Tesla Miniatura 3" onclick="changeImage('img/tesla3.png')">
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de detalhes do produto -->
+    <div class="details-section">
+        <div class="product-title">Tênis Tesla</div>
+        <div class="price">R$ 399,90 <span class="old-price">R$ 499,90</span></div>
+        <div class="installments">ou 10x de R$ 39,90</div>
+        <div class="pix-discount">5% de desconto no Pix</div>
+        <div class="shipping">Taxa de envio: R$ 15,99</div>
+
+        <!-- Seleção de tamanho -->
+        <div class="size-selection">
+            <label for="size">Escolha o Tamanho:</label>
+            <div class="sizes">
+                <button onclick="selectSize(this)">34</button>
+                <button onclick="selectSize(this)">35</button>
+                <button onclick="selectSize(this)">36</button>
+                <button onclick="selectSize(this)">37</button>
+                <button onclick="selectSize(this)">38</button>
+                <button onclick="selectSize(this)">39</button>
+                <button onclick="selectSize(this)">40</button>
+                <button onclick="selectSize(this)">41</button>
+                <button onclick="selectSize(this)">42</button>
+                <button onclick="selectSize(this)">43</button>
+                <button onclick="selectSize(this)">44</button>
+                <button onclick="selectSize(this)">45</button>
+            </div>
+        </div>
+
+        <!-- Botão de compra -->
+        <button class="buy-button" onclick="addToCart()">Adicionar ao Carrinho</button>
+
+        <!-- Descrição do produto -->
+        <div class="description">
+            <p>O Tênis Tesla combina conforto e estilo com uma construção de alta qualidade. Ideal para quem busca um modelo moderno e versátil para diversas ocasiões. Disponível nos tamanhos 34 a 45.</p>
+        </div>
+
+        <!-- Detalhes adicionais -->
+        <div class="details">
+            <span><strong>Frete & Trocas:</strong> Consulte os detalhes de frete e trocas para sua região.</span>
+            <span><strong>Tabela de Medidas:</strong> Confira o guia de tamanhos para uma escolha perfeita.</span>
+            <span><strong>Cashback:</strong> Ganhe pontos em sua próxima compra.</span>
+            <span><strong>Avaliações:</strong> Veja o que nossos clientes dizem.</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função para mudar a imagem principal
+    function changeImage(src) {
+        document.getElementById("mainImg").src = src;
+    }
+
+    // Função para selecionar o tamanho e aplicar a classe 'active' ao botão
+    function selectSize(button) {
+        const buttons = document.querySelectorAll('.sizes button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

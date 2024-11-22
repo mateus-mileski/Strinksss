@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncio de Shorts</title>
+    <link rel="stylesheet" href="destaque.css">
+</head>
+<body>
+
+<!-- Barra de Navegação Personalizada -->
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+    </div>
+    <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="carrinho.html">Carrinho</a>
+    </div>
+</div>
+
+<div class="container">
+    <!-- Seção de imagens -->
+    <div class="images-section">
+        <div class="main-image">
+            <img id="mainImg" src="img/shorts.jpeg" alt="Shorts Principal">
+        </div>
+        <div class="thumbnail-container">
+            <div class="thumbnail">
+                <img src="img/shorts.jpeg" alt="Shorts Miniatura 1" onclick="changeImage('img/Shorts.jpeg')">
+            </div>
+            <div class="thumbnail">
+                <img src="img/shorts1.png" alt="Shorts Miniatura 2" onclick="changeImage('img/Shorts1.png')">
+            </div>
+        </div>
+    </div>
+
+    <!-- Seção de detalhes do produto -->
+    <div class="details-section">
+        <div class="product-title">Shorts Streetwear Casual</div>
+        <div class="price">R$ 64,99</div>
+        <div class="installments">ou 3x de R$ 21,66</div>
+        <div class="pix-discount">3% de desconto no Pix</div>
+        <div class="shipping">Taxa de envio: R$ 10,99</div>
+
+        <!-- Seleção de tamanho -->
+        <div class="size-selection">
+            <label for="size">Escolha o Tamanho:</label>
+            <div class="sizes">
+                <button>P</button>
+                <button>M</button>
+                <button>G</button>
+                <button>GG</button>
+            </div>
+        </div>
+
+        <!-- Botão de compra -->
+        <button class="buy-button">Comprar agora</button>
+
+        <!-- Descrição do produto -->
+        <div class="description">
+            <p>O Shorts Streetwear Casual é a escolha perfeita para o seu dia a dia. Confortável, estiloso e versátil, ideal para qualquer ocasião. Fabricado com materiais de alta qualidade, garante durabilidade e conforto ao vestir.</p>
+        </div>
+
+        <!-- Detalhes adicionais -->
+        <div class="details">
+            <span><strong>Frete & Trocas:</strong> Consulte os detalhes de frete e trocas para sua região.</span>
+            <span><strong>Tabela de Medidas:</strong> Confira o guia de tamanhos para uma escolha perfeita.</span>
+            <span><strong>O modelo veste:</strong> Tamanho G.</span>
+            <span><strong>Cashback:</strong> Ganhe pontos em sua próxima compra.</span>
+            <span><strong>Avaliações:</strong> Veja o que nossos clientes dizem.</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function changeImage(src) {
+        document.getElementById("mainImg").src = src;
+    }
+</script>
+
+</body>
+</html>

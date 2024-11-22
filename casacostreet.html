@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncio de Casaco Street</title>
+    <link rel="stylesheet" href="destaque.css">
+    <style>
+        /* Estilização para os botões de tamanhos */
+        .sizes button {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .sizes button:hover {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        .sizes button.active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        /* Ajustes para garantir que todas as imagens fiquem visíveis */
+        .main-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        /* Ajuste no layout das imagens miniaturas */
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+        }
+        .thumbnail img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilização do botão de voltar */
+        .back-button {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: red;
+            color: white;
+            border-color: red;
+        }
+
+        /* Estilização para o botão "Comprar Agora" */
+        .buy-now-button {
+            background-color: red; /* Botão vermelho */
+            color: white;
+            padding: 15px 25px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .buy-now-button:hover {
+            background-color: darkred; /* Cor mais escura no hover */
+            transform: scale(1.05); /* Leve aumento no tamanho ao passar o mouse */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Navegação Personalizada -->
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+    </div>
+    <div class="navbar-links">
+        <a href="index.html">Home</a>
+    </div>
+</div>
+
+<div class="container">
+    
+<!-- Seção de imagens -->
+<div class="images-section">
+    <div class="main-image">
+        <img id="mainImg" src="img/casaco1.png" alt="Casaco Street Principal">
+    </div>
+    <div class="thumbnail-container">
+        <div class="thumbnail">
+            <img src="img/casaco1.png" alt="Casaco Street Miniatura 1" onclick="changeImage('img/casaco1.png')">
+        </div>
+        <div class="thumbnail">
+            <img src="img/casaco2.png" alt="Casaco Street Miniatura 2" onclick="changeImage('img/casaco2.png')">
+        </div>
+        <div class="thumbnail">
+            <img src="img/casaco3.png" alt="Casaco Street Miniatura 3" onclick="changeImage('img/casaco3.png')">
+        </div>
+    </div>
+</div>
+
+    <!-- Seção de detalhes do produto -->
+    <div class="details-section">
+        <div class="product-title">Casaco Street</div>
+        <div class="price">R$ 189,90 <span class="old-price">R$ 221,90</span></div>
+        <div class="installments">ou 3x de R$ 63,30</div>
+        <div class="pix-discount">5% de desconto no Pix</div>
+        <div class="shipping">Taxa de envio: R$ 15,99</div>
+
+        <!-- Seleção de tamanho -->
+        <div class="size-selection">
+            <label for="size">Escolha o Tamanho:</label>
+            <div class="sizes">
+                <button onclick="selectSize(this)">P</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">G</button>
+                <button onclick="selectSize(this)">GG</button>
+            </div>
+        </div>
+        
+         <button class="buy-button" onclick="addToCart()">Comprar agora</button>
+
+        <!-- Descrição do produto -->
+        <div class="description">
+            <p>O Casaco Street combina conforto e estilo urbano, ideal para dias frios e looks modernos. Com tecido de alta qualidade, é perfeito para o dia a dia. Disponível nos tamanhos P a GG.</p>
+        </div>
+
+        <!-- Detalhes adicionais -->
+        <div class="details">
+            <span><strong>Frete & Trocas:</strong> Consulte os detalhes de frete e trocas para sua região.</span>
+            <span><strong>Tabela de Medidas:</strong> Confira o guia de tamanhos para uma escolha perfeita.</span>
+            <span><strong>Cashback:</strong> Ganhe pontos em sua próxima compra.</span>
+            <span><strong>Avaliações:</strong> Veja o que nossos clientes dizem.</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Função para trocar imagem principal
+    function changeImage(src) {
+        document.getElementById("mainImg").src = src;
+    }
+
+    // Função para selecionar o tamanho e aplicar a classe 'active' ao botão
+    function selectSize(button) {
+        const buttons = document.querySelectorAll('.sizes button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

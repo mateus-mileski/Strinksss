@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Produto - Blusa Street High</title>
+    <link rel="stylesheet" href="destaque.css">
+    <style>
+        /* Estilos adicionais */
+        .sizes button {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .sizes button:hover {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        .sizes button.active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+        .main-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+        }
+        .thumbnail img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+        .cart-container {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+        }
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .clear-cart-btn {
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #dc3545;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .clear-cart-btn:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+    </div>
+    <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="carrinho.html">Carrinho</a>
+    </div>
+</div>
+
+<div class="container">
+    <div class="images-section">
+        <div class="main-image">
+            <img id="mainImg" src="img/camisaHIGH.png" alt="Blusa Street High Principal">
+        </div>
+        <div class="thumbnail-container">
+            <div class="thumbnail">
+                <img src="img/camisaHIGH.png" alt="Blusa Street High Miniatura 1" onclick="changeImage('img/camisaHIGH.png')">
+            </div>
+            <div class="thumbnail">
+                <img src="img/camisaHIGH1.png" alt="Blusa Street High Miniatura 2" onclick="changeImage('img/camisaHIGH1.png')">
+            </div>
+            <div class="thumbnail">
+                <img src="img/camisaHIGH2.png" alt="Blusa Street High Miniatura 3" onclick="changeImage('img/camisaHIGH2.png')">
+            </div>
+        </div>
+    </div>
+
+    <div class="details-section">
+        <div class="product-title">Blusa Street High</div>
+        <div class="price" id="productPrice">R$ 99,90 <span class="old-price">R$ 129,90</span></div>
+        <div class="installments">ou 6x de R$ 41,65</div>
+        <div class="pix-discount">5% de desconto no Pix</div>
+        <div class="shipping">Taxa de envio: R$ 15,99</div>
+
+        <div class="size-selection">
+            <label for="size">Escolha o Tamanho:</label>
+            <div class="sizes">
+                <button onclick="selectSize(this)">P</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">G</button>
+                <button onclick="selectSize(this)">GG</button>
+            </div>
+        </div>
+
+        <button class="buy-button" onclick="addToCart()">Comprar agora</button>
+
+        <div class="description">
+            <p>A Blusa Street High é ideal para quem busca estilo urbano e conforto. Com design moderno, ela é perfeita para compor looks descontraídos e com personalidade. Disponível nos tamanhos P a GG.</p>
+        </div>
+    </div>
+</div>
+
+<!-- Carrinho -->
+<div class="cart-container">
+    <h2>Carrinho de Compras</h2>
+    <div id="cartItemsList"></div>
+    <div id="cartTotal"></div>
+    <button class="clear-cart-btn" onclick="clearCart()">Limpar Carrinho</button>
+</div>
+
+<script>
+    // Função para trocar a imagem principal
+    function changeImage(src) {
+        document.getElementById("mainImg").src = src;
+    }
+
+    // Função para selecionar o tamanho
+    function selectSize(button) {
+        const buttons = document.querySelectorAll('.sizes button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+
+    // Função para adicionar ao carrinho
+    function addToCart() {
+        const productTitle = document.querySelector('.product-title').innerText;
+        const productPrice = parseFloat(document.querySelector('#productPrice').innerText.replace("R$", "").replace(",", ".").trim());
+        const selectedSize = document.querySelector('.sizes button.active');
+
+        if (!selectedSize) {
+            alert("Selecione um tamanho para adicionar ao carrinho.");
+            return;
+        }
+
+        const size = selectedSize.innerText;
+
+        // Recupera os itens do carrinho do localStorage
+        let cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+        // Adiciona o novo item ao carrinho
+        cartItems.push({
+            title: productTitle,
+            price: productPrice,
+            size: size,
+            image: "img/camisaHIGH.png"
+        });
+
+        // Salva o carrinho no localStorage
+        localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+        alert("Produto adicionado ao carrinho!");
+        loadCart();
+    }
+
+    // Função para carregar os itens do carrinho
+    function loadCart() {
+        const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+        const cartItemsList = document.getElementById("cartItemsList");
+        const cartTotal = document.getElementById("cartTotal");
+
+        if (cartItems.length === 0) {
+            cartItemsList.innerHTML = "<p>Seu carrinho está vazio.</p>";
+            cartTotal.innerHTML = "";
+            return;
+        }
+
+        let total = 0;
+        cartItemsList.innerHTML = cartItems.map(item => {
+            total += item.price;
+            return `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.title}">
+                    <div>
+                        <h3>${item.title}</h3>
+                        <p>Tamanho: ${item.size}</p>
+                        <p>R$ ${item.price.toFixed(2)}</p>
+                    </div>
+                </div>
+            `;
+        }).join("");
+
+        cartTotal.innerHTML = `<h3>Total: R$ ${total.toFixed(2)}</h3>`;
+    }
+
+    // Função para limpar o carrinho
+    function clearCart() {
+        // Limpar o localStorage
+        localStorage.removeItem("cartItems");
+        loadCart(); // Atualiza a interface
+        alert("Carrinho limpo!");
+    }
+
+    // Carregar o carrinho ao abrir a página
+    window.onload = loadCart;
+</script>
+
+</body>
+</html>

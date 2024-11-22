@@ -1,0 +1,246 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #1a1a1a; /* Cor de fundo escura */
+  color: #fff; /* Texto branco */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  flex-direction: column; /* Garante que os elementos fiquem na vertical */
+  padding-top: 60px; /* Espaço para a barra de navegação fixa */
+}
+
+/* Barra de navegação fixa no topo */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #333;
+  z-index: 1000; /* Garante que a barra de navegação fique acima de outros elementos */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Logo */
+.navbar .logo {
+  display: flex;
+  align-items: center;
+}
+
+.navbar .logo img {
+  height: 40px;
+  margin-right: 10px;
+}
+
+.navbar .logo-text {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+  color: white;
+}
+
+/* Botões da barra de navegação */
+.navbar-buttons button {
+  background-color: #ff6f61;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  margin: 0 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.navbar-buttons button:hover {
+  background-color: #e55c4c;
+}
+
+/* Menu lateral */
+.side-menu {
+  position: fixed;
+  top: 60px; /* Abaixo da barra de navegação */
+  left: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #333;
+  transition: 0.3s;
+  z-index: 999;
+  padding-top: 30px;
+}
+
+.side-menu a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 22px;
+  color: white;
+  display: block;
+  transition: 0.3s;
+}
+
+.side-menu a:hover {
+  background-color: #575757;
+}
+
+/* Estilo do formulário */
+form {
+  background-color: #222; /* Fundo do formulário */
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 500px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.5s ease-out; /* Animação para o formulário */
+  z-index: 10; /* Garantir que o formulário esteja acima */
+  margin-top: 80px; /* Espaçamento para o topo da página */
+}
+
+/* Efeito da borda vermelha ao redor do formulário */
+form::before {
+  content: '';
+  position: absolute;
+  top: -5px;
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  border: 2px solid red;
+  border-radius: 8px;
+  animation: pulseBorder 2s infinite; /* Animação da borda */
+  z-index: -1; /* Colocar a borda abaixo do formulário */
+}
+
+/* Título */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  color: #ff4747; /* Cor vermelha */
+  animation: fadeIn 1s ease-out;
+}
+
+/* Campos de entrada */
+.field {
+  margin-bottom: 20px;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 5px;
+}
+
+.field input,
+.field textarea {
+  display: block;
+  width: 100%; /* Garantir que os campos tenham largura total */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #444;
+  border-radius: 4px;
+  background-color: #333;
+  color: #fff;
+  transition: border 0.3s, box-shadow 0.3s;
+  z-index: 2; /* Garantir que os campos fiquem acima da borda */
+}
+
+/* Efeito de foco nos campos de entrada */
+.field input:focus,
+.field textarea:focus {
+  border: 1px solid #ff4747; /* Borda vermelha ao focar */
+  box-shadow: 0 0 5px rgba(255, 71, 71, 0.8); /* Sombra vermelha */
+  outline: none;
+}
+
+/* Ajuste para o campo de texto (textarea) */
+.field textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+/* Botão de envio */
+input[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  font-size: 18px;
+  background-color: #ff4747;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease;
+}
+
+input[type="submit"]:hover {
+  background-color: #e03e3e;
+  transform: scale(1.05); /* Efeito de aumento no hover */
+}
+
+input[type="submit"]:disabled {
+  background-color: #b0b0b0;
+  cursor: not-allowed;
+}
+
+/* Estilo para mensagens de sucesso ou erro */
+.alert {
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 4px;
+  font-size: 16px;
+  animation: fadeIn 1s ease-out;
+}
+
+.alert.success {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.alert.error {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Animações */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulseBorder {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,23 @@
+<button onclick="addToCart()">Adicionar ao Carrinho</button>
+
+<script>
+    function addToCart() {
+        const product = {
+            name: 'Casaco Lobo',
+            price: 399.90,
+            size: 'M',
+            image: 'img/casacolobao.png'
+        };
+
+        // Recupera o carrinho do localStorage ou cria um novo carrinho
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        
+        // Adiciona o produto ao carrinho
+        cart.push(product);
+
+        // Salva o carrinho de volta no localStorage
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        alert('Produto adicionado ao carrinho!');
+    }
+</script>

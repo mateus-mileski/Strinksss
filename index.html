@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strinks - Sua autoestima em roupas.</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+    <script src="https://apis.google.com/js/platform.js" async defer></script> <!-- Google Sign-In -->
+</head>
+<body>
+
+    <!-- Barra de Navegação -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+            
+        </div>
+        <div class="navbar-buttons">
+            <button class="menu-btn" id="menu-toggle">☰</button>
+            <button class="auth-btn" onclick="login()">Login</button> <!-- Botão de Login -->
+            <button class="auth-btn" onclick="viewCart()">Carrinho</button> <!-- Botão de Carrinho -->
+            <button class="auth-btn" onclick="window.location.href='sobre.html'">Sobre</button> <!-- Botão Sobre -->
+        </div>
+    </div>
+
+    <!-- Menu Lateral -->
+    <div class="side-menu" id="side-menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="camisas.html">Camisas</a></li>
+            <li><a href="tenis.html">Tênis</a></li>
+            <li><a href="calcas.html">Calças</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="sobre.html">Sobre</a></li> <!-- Adicionando o link "Sobre" -->
+            <li><a href="contato.html">Contato</a></li> <!-- Adicionando o link "Contato" -->
+        </ul>
+    </div>
+
+    <div class="highlight-section">
+        <h1>Destaques</h1>
+        <div class="product-container">
+            <div class="product-item">
+                <a href="camisaDestaque.html">
+                    <img src="img/camisadestaque.png" alt="Produto 1">
+                    <h2>Camiseta Estampada</h2>
+                    <p>R$ 89,90</p>
+                </a>
+                
+                <button class="add-to-cart" data-name="Camiseta Estampada" data-price="89.90">Adicionar ao Carrinho</button>
+            </div>
+        </div>
+    </div>
+
+  
+
+   
+
+    <!-- Botão de Voltar ao Início -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">↑</button>
+
+    <script src="js.js"></script> <!-- Inclua seu arquivo JavaScript -->
+</body>
+</html>

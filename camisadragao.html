@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncio de Camisa Dragon</title>
+    <link rel="stylesheet" href="destaque.css">
+    <style>
+        /* Estilização para os botões de tamanhos */
+        .sizes button {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .sizes button:hover {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        .sizes button.active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        /* Ajustes para garantir que todas as imagens fiquem visíveis */
+        .main-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        /* Ajuste no layout das imagens miniaturas */
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+        }
+        .thumbnail img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilização do botão de voltar */
+        .back-button {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: red;
+            color: white;
+            border-color: red;
+        }
+
+        /* Estilização do ícone do carrinho e notificação */
+        .cart-icon {
+            position: relative;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        .cart-notification {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: red;
+            color: white;
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Navegação Personalizada -->
+<div class="navbar">
+    <div class="logo">
+        <a href="index.html"><img src="img/logo.png" alt="Logo"></a>
+    </div>
+    <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="carrinho.html" class="cart-icon">🛒 <span class="cart-notification" id="cartCount">0</span></a>
+    </div>
+</div>
+
+<div class="container">
+    
+<!-- Seção de imagens -->
+<div class="images-section">
+    <div class="main-image">
+        <img id="mainImg" src="img/camisadragon1.png" alt="Camisa Dragon Principal">
+    </div>
+    <div class="thumbnail-container">
+        <div class="thumbnail">
+            <img src="img/camisadragon1.png" alt="Camisa Dragon Miniatura 1" onclick="changeImage('img/camisadragon1.png')">
+        </div>
+        <div class="thumbnail">
+            <img src="img/camisadragon2.png" alt="Camisa Dragon Miniatura 2" onclick="changeImage('img/camisadragon2.png')">
+        </div>
+        <div class="thumbnail">
+            <img src="img/camisadragon3.png" alt="Camisa Dragon Miniatura 3" onclick="changeImage('img/camisadragon3.png')">
+        </div>
+    </div>
+</div>
+
+    <!-- Seção de detalhes do produto -->
+    <div class="details-section">
+        <div class="product-title">Camisa Dragon</div>
+        <div class="price">R$ 64,99 <span class="old-price">R$ 129,90</span></div>
+        <div class="installments">ou 2x de R$ 35,99</div>
+        <div class="pix-discount">5% de desconto no Pix</div>
+        <div class="shipping">Taxa de envio: R$ 15,99</div>
+
+        <!-- Seleção de tamanho -->
+        <div class="size-selection">
+            <label for="size">Escolha o Tamanho:</label>
+            <div class="sizes">
+                <button onclick="selectSize(this)">P</button>
+                <button onclick="selectSize(this)">M</button>
+                <button onclick="selectSize(this)">G</button>
+                <button onclick="selectSize(this)">GG</button>
+            </div>
+        </div>
+
+        <!-- Botão de compra -->
+        <button class="buy-button" onclick="addToCart()">Comprar agora</button>
+
+        <!-- Descrição do produto -->
+        <div class="description">
+            <p>A Camisa Dragon é perfeita para quem busca estilo e autenticidade. Com design exclusivo, é ideal para compor looks urbanos e cheios de personalidade. Disponível nos tamanhos P a GG.</p>
+        </div>
+
+        <!-- Detalhes adicionais -->
+        <div class="details">
+            <span><strong>Frete & Trocas:</strong> Consulte os detalhes de frete e trocas para sua região.</span>
+            <span><strong>Tabela de Medidas:</strong> Confira o guia de tamanhos para uma escolha perfeita.</span>
+            <span><strong>Cashback:</strong> Ganhe pontos em sua próxima compra.</span>
+            <span><strong>Avaliações:</strong> Veja o que nossos clientes dizem.</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Carregar o número de itens do carrinho ao carregar a página
+    function loadCartCount() {
+        const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+        document.getElementById("cartCount").textContent = cartItems.length;
+    }
+
+    function changeImage(src) {
+        document.getElementById("mainImg").src = src;
+    }
+
+    // Função para selecionar o tamanho e aplicar a classe 'active' ao botão
+    function selectSize(button) {
+        const buttons = document.querySelectorAll('.sizes button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+
+    // Função para adicionar itens ao carrinho e atualizar o contador
+    function addToCart() {
+        const selectedSize = document.querySelector('.sizes button.active')?.textContent;
+        if (!selectedSize) {
+            alert("Por favor, selecione um tamanho.");
+            return;
+        }
+
+        // Obter o carrinho atual do localStorage, ou iniciar como um array vazio
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Adicionar o item ao carrinho com informações básicas
+        cartItems.push({
+            name: "Camisa Dragon",
+            size: selectedSize,
+            price: 64.99,
+            image: document.getElementById("mainImg").src // Salvar a imagem principal do produto
+        });
+
+        // Salvar o carrinho atualizado no localStorage
+        localStorage.setItem('cartItems', JSON.stringify(cartItems));
+
+        // Atualizar o contador do carrinho
+        loadCartCount(); // Atualiza o contador de itens no carrinho
+    }
+
+    // Carregar a contagem do carrinho ao abrir a página
+    window.onload = loadCartCount;
+</script>
+
+</body>
+</html>

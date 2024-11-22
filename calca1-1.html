@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anúncio de Calça Baggy Masculina</title>
+    <link rel="stylesheet" href="destaque.css">
+    <style>
+        /* Estilização para os botões de cores */
+        .colors button {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .colors button:hover {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        .colors button.active {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+
+        /* Estilização para os botões de tamanho */
+        .sizes button {
+            background-color: #fff;
+            border: 2px solid #ccc;
+            padding: 10px 15px;
+            margin: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .sizes button:hover {
+            background-color: red;
+            border-color: red;
+            color: white;
+        }
+        .sizes button.active {
+            background-color: #28a745;
+            color: white;
+            border-color: #28a745;
+        }
+
+        /* Ajustes para garantir que todas as imagens fiquem visíveis */
+        .main-image img {
+            width: 100%;
+            max-height: 500px;
+            object-fit: cover;
+        }
+
+        /* Ajuste no layout das imagens miniaturas */
+        .thumbnail-container {
+            display: flex;
+            gap: 10px;
+        }
+        .thumbnail img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+        .thumbnail img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Estilização do botão de voltar */
+        .back-button {
+            background-color: #f8f9fa;
+            border: 2px solid #007bff;
+            color: #007bff;
+            padding: 8px 15px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .back-button:hover {
+            background-color: red;
+            color: white;
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Navegação Personalizada -->
+<div class="navbar">
+    <div class="logo">
+       <img src="img/logo.png" alt="Logo">
+    </div>
+    <div class="navbar-links">
+        <a href="index.html">Home</a>
+        <a href="carrinho.html">Carrinho</a>
+    </div>
+</div>
+
+<div class="container">
+    
+<!-- Seção de imagens -->
+<div class="images-section">
+    <div class="main-image">
+        <img id="mainImg" src="img/calca1-1.jfif" alt="Calça Baggy Masculina Principal">
+    </div>
+    <div class="thumbnail-container">
+        <div class="thumbnail">
+            <img src="img/calca1-1.jfif" alt="Calça Baggy Masculina Miniatura 1" onclick="changeImage('img/calca1-1.jfif')">
+        </div>
+        <div class="thumbnail">
+            <img src="img/calça.jpg" alt="Calça Baggy Masculina Miniatura 2" onclick="changeImage('img/calça.jpg')">
+        </div>
+        <div class="thumbnail">
+            <img src="img/calca1-3.jfif" alt="Calça Baggy Masculina Miniatura 3" onclick="changeImage('img/calca1-3.jfif')">
+        </div>
+    </div>
+</div>
+
+
+
+    <!-- Seção de detalhes do produto -->
+    <div class="details-section">
+        <div class="product-title">Calça Baggy Masculina</div>
+        <div class="price">R$ 299,90 <span class="old-price">R$ 349,90</span></div>
+        <div class="installments">ou 6x de R$ 49,98</div>
+        <div class="pix-discount">5% de desconto no Pix</div>
+        <div class="shipping">Taxa de envio: R$ 15,99</div>
+
+        <!-- Seleção de tamanho -->
+        <div class="size-selection">
+            <label for="size">Escolha o Tamanho:</label>
+            <div class="sizes">
+                <button onclick="selectSize(this)">28</button>
+                <button onclick="selectSize(this)">30</button>
+                <button onclick="selectSize(this)">32</button>
+                <button onclick="selectSize(this)">34</button>
+                <button onclick="selectSize(this)">36</button>
+                <button onclick="selectSize(this)">38</button>
+                <button onclick="selectSize(this)">40</button>
+                <button onclick="selectSize(this)">42</button>
+                <button onclick="selectSize(this)">44</button>
+                <button onclick="selectSize(this)">46</button>
+                <button onclick="selectSize(this)">48</button>
+            </div>
+        </div>
+
+        <!-- Seleção de cor -->
+        <div class="color-selection">
+            <label for="color">Escolha a Cor:</label>
+            <div class="colors">
+                <button class="color-btn" onclick="selectColor(this)">Azul Claro</button>
+                <button class="color-btn" onclick="selectColor(this)">Azul Escuro</button>
+                <button class="color-btn" onclick="selectColor(this)">Cinza Escuro</button>
+            </div>
+        </div>
+
+        <!-- Botão de compra -->
+        <button class="buy-button">Comprar agora</button>
+
+        <!-- Descrição do produto -->
+        <div class="description">
+            <p>A Calça Baggy Masculina é perfeita para quem busca conforto e estilo. Com um design moderno e descontraído, essa calça oferece o ajuste ideal e liberdade de movimento, perfeita para o dia a dia ou um look mais descomplicado. Disponível nos tamanhos 28 a 48 e em três cores: Azul Claro, Azul Escuro e Cinza Escuro.</p>
+        </div>
+
+        <!-- Detalhes adicionais -->
+        <div class="details">
+            <span><strong>Frete & Trocas:</strong> Consulte os detalhes de frete e trocas para sua região.</span>
+            <span><strong>Tabela de Medidas:</strong> Confira o guia de tamanhos para uma escolha perfeita.</span>
+            <span><strong>O modelo veste:</strong> Tamanho 42.</span>
+            <span><strong>Cashback:</strong> Ganhe pontos em sua próxima compra.</span>
+            <span><strong>Avaliações:</strong> Veja o que nossos clientes dizem.</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    function changeImage(src) {
+        document.getElementById("mainImg").src = src;
+    }
+
+    // Função para selecionar a cor e aplicar a classe 'active' ao botão
+    function selectColor(button) {
+        const buttons = document.querySelectorAll('.color-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+
+    // Função para selecionar o tamanho e aplicar a classe 'active' ao botão
+    function selectSize(button) {
+        const buttons = document.querySelectorAll('.sizes button');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+    }
+</script>
+
+</body>
+</html>

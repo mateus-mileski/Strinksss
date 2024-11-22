@@ -1,0 +1,134 @@
+/* Resetando margens e padding padrão */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Definindo fonte base e cor de fundo */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Barra de navegação personalizada */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar .logo img {
+    width: 55px; /* Logo menor */
+}
+
+.navbar-links {
+    display: flex;
+    gap: 20px;
+}
+
+.navbar-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.1em;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-links a:hover {
+    background-color: #e74c3c;
+    color: #fff;
+    transform: translateY(-4px);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Container principal */
+.container {
+    max-width: 1200px;
+    margin: 80px auto 20px; /* Espaço extra para a navbar fixa */
+    background-color: #fff;
+    padding: 30px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Títulos da página */
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Estilizando as seções */
+section {
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #e74c3c;
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.8;
+}
+
+/* Lista de valores */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul li {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+/* Ajustando o layout de seção */
+.about-section, .mission-section, .vision-section, .values-section, .team-section, .culture-section {
+    padding: 20px;
+    border-left: 4px solid #e74c3c;
+    background-color: #fafafa;
+    margin: 15px 0;
+    border-radius: 8px;
+}
+
+.about-section {
+    background-color: #f9f9f9;
+}
+
+.mission-section, .vision-section {
+    background-color: #fdfdfd;
+}
+
+.values-section ul li {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 5px;
+}
+
+/* Adicionando sombreamento nas seções */
+section {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    background-color: #fff;
+    padding: 20px;
+}

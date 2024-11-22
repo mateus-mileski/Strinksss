@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tenis e chinelos</title>
+    <link rel="stylesheet" href="calcas.css">
+    <style>
+        /* Estilo da Navbar */
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .navbar .logo img {
+            max-height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar .menu-btn {
+            font-size: 24px;
+            color: #fff;
+            background: none;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar .menu-btn:hover {
+            transform: rotate(90deg);
+        }
+
+        /* Estilo do Menu Lateral */
+        .side-menu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            background-color: #333;
+            padding: 20px;
+            color: white;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+
+        .side-menu h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .side-menu ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .side-menu ul li {
+            margin-bottom: 10px;
+        }
+
+        .side-menu ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        /* Container dos Produtos */
+        .product-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        /* Estilo de cada Produto */
+        .product-item {
+            width: 200px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 10px;
+            background-color: #f9f9f9;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-item img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .product-item h2 {
+            font-size: 18px;
+            margin: 10px 0 5px;
+            color: #333;
+        }
+
+        .product-item p {
+            font-size: 16px;
+            color: #777;
+            margin: 5px 0;
+        }
+
+        .add-to-cart {
+            display: inline-block;
+            padding: 8px 12px;
+            margin-top: 10px;
+            color: #fff;
+            background-color: #d9534f; /* Botão em vermelho */
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .add-to-cart:hover {
+            background-color: #c9302c;
+            transform: translateY(-3px);
+        }
+
+        /* Título da Página */
+        .move-right {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Botão do Menu -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="img/logo.png" alt="Logo">
+            <span class="logo-text"></span>
+        </div>
+        <button class="menu-btn" onclick="toggleMenu()">☰</button>
+    </div>
+
+    <!-- Menu Lateral -->
+    <div class="side-menu" id="side-menu">
+        <h2>Menu</h2>
+        <ul>
+            <li><a href="index.html">Início</a></li>
+            <li><a href="camisas.html">Camisas</a></li>
+            <li><a href="tenis.html">Tênis</a></li>
+            <li><a href="calcas.html">Calças</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+
+        </ul>
+    </div>
+
+    <h1 class="move-right">Tênis e Chinelos</h1>
+
+    <!-- Container dos Produtos -->
+    <div class="product-container">
+        <div class="product-item">
+            <img src="img/tenisVans1.png" alt="Camisa HIGH">
+            <h2>Tênis Knu Skool Black True White</h2>
+            <p>R$ 699,90</p>
+            <a href="tenisVans.html" class="add-to-cart">Ver Produto</a>
+        </div>
+        <div class="product-item">
+            <img src="img/tesla3.png" alt="Camisa Dragão">
+            <h2>Tênis Tesla Coil Black Purple</h2>
+            <p>R$ 399,99</p>
+            <a href="tesla.html" class="add-to-cart">Ver Produto</a>
+        </div>
+        <div class="product-item">
+            <img src="img/air2.png" alt="Casaco Street">
+            <h2>Nike Air Force 1</h2>
+            <p>R$ 189,90</p>
+            <a href="air.html" class="add-to-cart">Ver Produto</a>
+        </div>
+        <div class="product-item">
+            <img src="img/asuna3.png" alt="Casaco Lobo">
+            <h2>Chinelo Asuna 3</h2>
+            <p>R$ 299,90</p>
+            <a href="asuna.html" class="add-to-cart">Ver Produto</a>
+        </div>
+    </div>
+
+    <script src="js.js"></script>
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('side-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        }
+    </script>
+</body>
+</html>
